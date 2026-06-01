@@ -15,3 +15,46 @@
 .service-grid article span{display:none!important}.service-grid h3{margin-top:0!important}.service-grid article{display:flex;flex-direction:column;justify-content:flex-start}
 
 .map-card-fallback{position:relative;overflow:hidden;background:linear-gradient(135deg,#fff1f7,#ffffff 45%,#f6e5ee);min-height:420px;display:grid;place-items:center}.map-card-fallback iframe{position:absolute;inset:0;width:100%;height:100%;opacity:.28;filter:saturate(.7) contrast(.9);border:0}.map-fallback-content{position:relative;z-index:2;background:rgba(255,255,255,.92);border:1px solid rgba(125,63,95,.18);border-radius:24px;padding:26px;box-shadow:0 18px 55px rgba(55,25,42,.14);display:flex;flex-direction:column;gap:10px;text-align:center}.map-fallback-content strong{font-size:1.15rem;color:#24151e}.map-fallback-content span{color:#6d5964}.map-fallback-content a{font-weight:800;color:#7d3f5f;text-decoration:none}@media(max-width:720px){.map-card-fallback{min-height:300px}.map-fallback-content{padding:20px;margin:18px}}
+
+/* Image layout repair: preserve real photo aspect ratios on desktop and mobile. */
+:is(.result-gallery,.gallery-grid,.results-grid,.portfolio-grid,.gallery,.masonry){
+  columns:3 240px !important;
+  column-gap:18px !important;
+  display:block !important;
+  grid-template-columns:none !important;
+  grid-auto-rows:auto !important;
+  align-items:start !important;
+}
+:is(.result-gallery,.gallery-grid,.results-grid,.portfolio-grid,.gallery,.masonry) > :is(img,figure,.result-card,.portfolio-card){
+  display:block !important;
+  width:100% !important;
+  height:auto !important;
+  min-height:0 !important;
+  max-height:none !important;
+  aspect-ratio:auto !important;
+  object-fit:unset !important;
+  break-inside:avoid !important;
+  margin:0 0 18px !important;
+  grid-column:auto !important;
+  grid-row:auto !important;
+}
+:is(.result-gallery,.gallery-grid,.results-grid,.portfolio-grid,.gallery,.masonry) img{
+  width:100% !important;
+  height:auto !important;
+  min-height:0 !important;
+  max-height:none !important;
+  aspect-ratio:auto !important;
+  object-fit:contain !important;
+  object-position:center !important;
+}
+:is(.result-gallery,.gallery-grid,.results-grid,.portfolio-grid,.gallery,.masonry) figcaption{
+  max-width:calc(100% - 24px);
+}
+@media (max-width:900px){
+  :is(.result-gallery,.gallery-grid,.results-grid,.portfolio-grid,.gallery,.masonry){columns:2 160px !important;column-gap:12px !important}
+  :is(.result-gallery,.gallery-grid,.results-grid,.portfolio-grid,.gallery,.masonry) > :is(img,figure,.result-card,.portfolio-card){margin-bottom:12px !important}
+}
+@media (max-width:560px){
+  :is(.result-gallery,.gallery-grid,.results-grid,.portfolio-grid,.gallery,.masonry){columns:1 !important}
+}
+
